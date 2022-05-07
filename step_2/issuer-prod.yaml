@@ -4,11 +4,12 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
     email: stephan.semerad@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-prod
+      name: letsencrypt-prod-key
     solvers:
+      # http01 challenge, this is what certmanagers uses to verify domain ownership.
       - http01:
           ingress:
             class: nginx
